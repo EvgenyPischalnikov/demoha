@@ -37,13 +37,10 @@ public class AutomationPracticForm {
         $(".react-datepicker__month-select").selectOption(10);
         $(".react-datepicker__day--028:not(.react-datepicker__day--outside-month").click();
 
-        $("#subjectsContainer").parent().click();
-        $("[id=subjectsInput]").sendKeys("B");
-        $("[id=subjectsInput]").sendKeys(Keys.ENTER);
-        $("[id=subjectsInput]").sendKeys("C");
-        $("[id=subjectsInput]").sendKeys(Keys.ENTER);
+        $("#subjectsInput").setValue("Biology").pressEnter();
+        $("#subjectsInput").setValue("Physics").pressEnter();
 
-        $("#hobbies-checkbox-3").parent().click();
+        $("#hobbiesWrapper").$(byText("Music")).click();
 
         $("#uploadPicture").uploadFromClasspath("cow.jpg");
 
