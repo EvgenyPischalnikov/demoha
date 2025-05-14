@@ -6,23 +6,24 @@ import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static org.openqa.selenium.Keys.SPACE;
 
 public class AutomationPracticForm {
 
     @BeforeAll
-    static void beforeAll() {
-        Configuration.browserSize = "1920x1080"; // убрали пробел перед "x"
+    static void setupEnvironment() {
+        Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
     }
 
     @Test
     void fillFormTest() {
         open("/automation-practice-form");
+
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
 
         $("#firstName").setValue("Evgeny");
         $("#lastName").setValue("Pischalnikov");
